@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class="row">
+<div class="col-md-10 offset-md-3">
+<h1>Makaleler</h1>
+<hr>
+</div>
+</div>
+   
+{% if articles %}
+ 
+    {% for article in articles %}
+
+    <div class="row">
+    <div class="col-md-10 offset-md-3">
+    <div class="col-lg-8">
+            <!-- Post content-->
+                <article>
+            <!-- Post header-->
+                <header class="mb-4">
+            <!-- Post title-->
+                <a href="/articles/article/{{article.id}}"><h2  class="fw-bolder mb-1">{{article.title}}</h2></a>
+            <!-- Post meta content-->
+                <div class="text-muted fst-italic mb-2"> {{article.author}} tarafından yayınlandı</div>
+            <!-- Post categories-->
+                <hr>
+                <div class="text-muted fst-italic mb-2">{{article.created_date}}</div>
+                <hr>
+                </header>
+            <!--- Preview image figure-->
+                        
+                {% if article.article_image %}
+                            
+                    <a href="/articles/article/{{article.id}}"><figure class="mb-4"><img class="img-fluid rounded" src="{{article.article_image.url}}" alt="..." /></figure></a>
+                        
+                {% endif %}
+                       
+                        
+            <!-- Post content-->
+                <section class="mb-5">
+                {{ article.content|safe }}
+                </section>
+                <hr>
+                </article>
+                    
+        </div>
+    </div>
+    </div>
+ 
+    {% endfor %}
+
+{% else %}
+    <div class= "alert alert-danger" >
+        Bu blogta herhangi bir makale bulunmuyor
+    </div>
+{% endif %}
+
+{% endblock body %}
