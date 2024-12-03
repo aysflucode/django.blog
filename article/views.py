@@ -17,7 +17,7 @@ def dashboard(request):
     return render(request,"dashboard.html",context)
 
 def addArticle(request):
-    form = ArticleForm(request.POST or None)
+    form = ArticleForm(request.POST or None, request.FILES or None)
 
     if form.is_valid():
         article= form.save(commit=False)
@@ -34,3 +34,4 @@ def detail(request,id):
     #article = Article.objects.filter(id = id).first
     article =get_object_or_404(Article,id= id)
     return render(request, "detail.html",{"article":article})
+
