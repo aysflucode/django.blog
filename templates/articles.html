@@ -40,8 +40,9 @@
                         
             <!-- Post content-->
                 <section class="mb-5">
-                {{ article.content|safe }}
+                {{ article.content|safe|truncatewords:30 }}
                 </section>
+                <a href="/articles/article/{{article.id}}" class="btn btn-danger"> Yazının Devamını Gör</a>
                 <hr>
                 </article>
                     
