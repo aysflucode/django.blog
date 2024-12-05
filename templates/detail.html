@@ -8,11 +8,11 @@
                     <article>
                         <!-- Post header-->
                         <header class="mb-4">
-                            <!-- Post title-->
+                        <!-- Post title-->
                             <h1 class="fw-bolder mb-1">{{article.title}}</h1>
-                            <!-- Post meta content-->
+                        <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2">Yazar: {{article.author}}</div>
-                            <!-- Post categories-->
+                        <!-- Post categories-->
                             <hr>
                             <div class="text-muted fst-italic mb-2">{{article.created_date}}</div>
                             <hr>
@@ -33,7 +33,25 @@
                         <hr>
                     </article>
                     
+                
+                        <!-- Comments section-->
+                        <div class="card my-4">
+                            <h5 class="card-header">Yorum Ekle:</h5>
+                            <div class="card-body">
+                                <form method="post" action="{% url 'article:comment' article.id %}" >
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">İsim</label>
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="İsminizi Giriniz">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Yorum</label>
+                                        <textarea class="form-control" rows="3" placeholder="Yorumunuzu yazın..." required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-danger mt-2">Gönder</button>
+                                </form>
+                            </div>
+                        </div>
                 </div>
- 
-
+                
 {% endblock body %}

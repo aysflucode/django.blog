@@ -72,3 +72,6 @@ def deleteArticle(request,id):
 
     messages.success(request, "Makale Başarıyla Silindi")
     return redirect("article:dashboard")
+
+def addcomment(request,id):
+    pass
