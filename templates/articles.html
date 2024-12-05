@@ -29,7 +29,7 @@
             <!-- Post header-->
                 <header class="mb-4">
             <!-- Post title-->
-                <a href="/articles/article/{{article.id}}"><h2  class="fw-bolder mb-1">{{article.title}}</h2></a>
+                <a href="{% url 'article:detail' article.id  %}"><h2  class="fw-bolder mb-1">{{article.title}}</h2></a>
             <!-- Post meta content-->
                 <div class="text-muted fst-italic mb-2"> {{article.author}} tarafından yayınlandı</div>
             <!-- Post categories-->
@@ -41,7 +41,7 @@
                         
                 {% if article.article_image %}
                             
-                    <a href="/articles/article/{{article.id}}"><figure class="mb-4"><img class="img-fluid rounded" src="{{article.article_image.url}}" alt="..." /></figure></a>
+                    <a href="{% url 'article:detail' article.id  %}"><figure class="mb-4"><img class="img-fluid rounded" src="{{article.article_image.url}}" alt="..." /></figure></a>
                         
                 {% endif %}
                        
@@ -50,7 +50,7 @@
                 <section class="mb-5">
                 {{ article.content|safe|truncatewords:30 }}
                 </section>
-                <a href="/articles/article/{{article.id}}" class="btn btn-danger"> Yazının Devamını Gör</a>
+                <a href="{% url 'article:detail' article.id  %}" class="btn btn-danger"> Yazının Devamını Gör</a>
                 <hr>
                 </article>
                     
